@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.1
 // @description  Add quick copy buttons for filenames and line references in GitHub PR review comments
-// @author       You
+// @author       therealmarv
 // @match        https://github.com/*/pull/*/
 // @match        https://github.com/*/pull/*
 // @icon         https://github.githubassets.com/favicons/favicon.svg
