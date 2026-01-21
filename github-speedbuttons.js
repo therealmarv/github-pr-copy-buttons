@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GitHub PR Speed Buttons
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Add quick copy buttons for filenames and line references in GitHub PR review comments
 // @author       You
 // @match        https://github.com/*/pull/*/
@@ -65,7 +65,6 @@
         .gh-speed-btn-container {
             display: inline-flex;
             align-items: center;
-            margin-left: 8px;
             margin-right: 8px;
         }
     `;
@@ -220,6 +219,13 @@
             childList: true,
             subtree: true
         });
+
+        // Handle GitHub's Turbo navigation (soft page transitions)
+        document.addEventListener('turbo:load', processAllThreads);
+        document.addEventListener('turbo:frame-load', processAllThreads);
+
+        // Handle GitHub's pjax navigation (legacy, but might still be used)
+        document.addEventListener('pjax:end', processAllThreads);
     }
 
     // Run when DOM is ready
