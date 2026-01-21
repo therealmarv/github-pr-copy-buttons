@@ -1,9 +1,13 @@
 // ==UserScript==
-// @name         GitHub PR Speed Buttons
-// @namespace    http://tampermonkey.net/
-// @version      1.1
+// @name         GitHub PR Copy Buttons
+// @namespace    https://github.com/therealmarv/github-pr-copy-buttons
+// @version      1.2
 // @description  Add quick copy buttons for filenames and line references in GitHub PR review comments
 // @author       therealmarv
+// @homepageURL  https://github.com/therealmarv/github-pr-copy-buttons
+// @supportURL   https://github.com/therealmarv/github-pr-copy-buttons/issues
+// @updateURL    https://raw.githubusercontent.com/therealmarv/github-pr-copy-buttons/main/github-speedbuttons.js
+// @downloadURL  https://raw.githubusercontent.com/therealmarv/github-pr-copy-buttons/main/github-speedbuttons.js
 // @match        https://github.com/*/pull/*/
 // @match        https://github.com/*/pull/*
 // @icon         https://github.githubassets.com/favicons/favicon.svg
