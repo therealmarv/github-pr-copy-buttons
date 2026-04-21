@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GitHub PR Copy Buttons
 // @namespace    https://github.com/therealmarv/github-pr-copy-buttons
-// @version      1.2
+// @version      1.3
 // @description  Add quick copy buttons for filenames and line references in GitHub PR review comments
 // @author       therealmarv
 // @homepageURL  https://github.com/therealmarv/github-pr-copy-buttons
@@ -75,9 +75,20 @@
 
     // Add styles to page
     function addStyles() {
+        if (document.getElementById('gh-speedbuttons-styles')) return;
+
         const styleElement = document.createElement('style');
+        styleElement.id = 'gh-speedbuttons-styles';
         styleElement.textContent = styles;
         document.head.appendChild(styleElement);
+    }
+
+    function getFilenameLink(threadElement) {
+        return threadElement.querySelector([
+            'a.text-mono.text-small.Link--primary[href*="#diff-"]',
+            'a.text-mono.text-small.Link--primary',
+            'a[href*="#diff-"]',
+        ].join(', '));
     }
 
     // Copy text to clipboard
@@ -152,11 +163,7 @@
         // Skip if already processed
         if (threadElement.querySelector('.gh-speed-btn-container')) return;
 
-        // Find the filename link in the summary
-        const summary = threadElement.querySelector('summary');
-        if (!summary) return;
-
-        const filenameLink = summary.querySelector('a.text-mono.text-small.Link--primary');
+        const filenameLink = getFilenameLink(threadElement);
         if (!filenameLink) return;
 
         const filename = filenameLink.textContent.trim();
